@@ -1,8 +1,3 @@
-from django.http.response import HttpResponse
-from django.shortcuts import render, HttpResponse
-from six import print_
-from analyzer.models import Feedback
-
 import pandas as pd
 
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -11,7 +6,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM,Dense, Dropout, SpatialDropout1D
 from tensorflow.keras.layers import Embedding
 
-df = pd.read_csv(r"analyzer/Tweets.csv")
+df = pd.read_csv(r"Tweets.csv")
 tweet_df = df[['text','airline_sentiment']]
 tweet_df = tweet_df[tweet_df['airline_sentiment'] != 'neutral']
 sentiment_label = tweet_df.airline_sentiment.factorize()
@@ -29,30 +24,10 @@ model.add(LSTM(50, dropout=0.5, recurrent_dropout=0.5))
 model.add(Dropout(0.2))
 model.add(Dense(1, activation='sigmoid')) 
 model.compile(loss='binary_crossentropy',optimizer='adam', metrics=['accuracy'])   
-history = model.fit(padded_sequence,sentiment_label[0],validation_split=0.2, epochs=1, batch_size=32)
+history = model.fit(padded_sequence,sentiment_label[0],validation_split=0.2, epochs=5, batch_size=32)
 def predict_sentiment(text):
     tw = tokenizer.texts_to_sequences([text])
     tw = pad_sequences(tw,maxlen=200)
     prediction = int(model.predict(tw).round().item())
     print("Predicted label: ", sentiment_label[1][prediction])
     return sentiment_label[1][prediction]
-
-
-def home(request):
-    if request.method == "POST":
-        # test_sentence1 = "This was the best ride ever."
-        # predict_sentiment(test_sentence1)
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        age = request.POST.get('age')
-        role = request.POST.get('role')
-        question1 = request.POST.get('question1')
-        question2 = request.POST.get('question2')
-        question3 = request.POST.get('question3')
-        question4 = request.POST.get('question4')
-        new_feedback = Feedback(name=name,email=email,age=age,role=role,q1=question1,q1s=predict_sentiment(question1),q2=question2,q2s=predict_sentiment(question2),q3=question3,q3s=predict_sentiment(question3),q4=question4,q4s=predict_sentiment(question4))
-        print(new_feedback)
-        new_feedback.save()
-        return HttpResponse("<h1>Thanks for your valuable time</h1>")
-    else:
-        return render(request, "index.html")

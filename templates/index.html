@@ -99,115 +99,116 @@
 <body>
     <h1> Survey Form</h1>
 
-    <div id="form">
-        <!-- Name -->
-        <div class="form-control">
-            <label for="name" id="label-name">
-                Name
-            </label>
-
-            <!-- Input Type Text -->
-            <input type="text" id="name" placeholder="Enter your name" />
-        </div>
-
-        <!-- Email -->
-        <div class="form-control">
-            <label for="email" id="label-email">
-                Email
-            </label>
-
-            <!-- Input Type Email-->
-            <input type="email" id="email" placeholder="Enter your email" />
-        </div>
-
-        <!-- Age -->
-        <div class="form-control">
-            <label for="age" id="label-age">
-                Age
-            </label>
-
-            <!-- Input Type Text -->
-            <input type="text" id="age" placeholder="Enter your age" />
-        </div>
-
-        <!-- Role -->
-        <div class="form-control">
-            <label for="role" id="label-role">
-                Which option best describes you?
-            </label>
-
-            <!-- Dropdown options -->
-            <select name="role" id="role">
-                <option value="student">Student</option>
-                <option value="intern">Intern</option>
-                <option value="professional">
-                    Professional
-                </option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-
-        <!-- Question 1 -->
-        <div class="form-control">
-            <label for="question1">
-                Question 1
-            </label>
-
-            <div class="input-control">
-                <!-- multi-line text input control -->
-                <textarea name="question1" id="question1" placeholder="Enter your response here here">
-            </textarea>
-                <button onclick="startConverting('question1')"><i class="fa fa-microphone btn btn-danger"></i></button>
-            </div>
-        </div>
-
-        <!-- Question 2 -->
-        <div class="form-control">
-            <label for="question2">
-                Question 2
-            </label>
-
-            <div class="input-control">
-                <!-- multi-line text input control -->
-                <textarea name="question2" id="question2" placeholder="Enter your response here here">
-        </textarea>
-                <button onclick="startConverting('question2')"><i class="fa fa-microphone btn btn-danger"></i></button>
-            </div>
-        </div>
-
-        <!-- Question 3 -->
-        <div class="form-control">
-            <label for="question3">
-                Question 3
-            </label>
-
-            <div class="input-control">
-                <!-- multi-line text input control -->
-                <textarea name="question3" id="question3" placeholder="Enter your response here here">
-        </textarea>
-                <button onclick="startConverting('question3')"><i class="fa fa-microphone btn btn-danger"></i></button>
-            </div>
-        </div>
-
-        <!-- Question 4 -->
-        <div class="form-control">
-            <label for="question4">
-                Question 4
-            </label>
-
-            <div class="input-control">
-                <!-- multi-line text input control -->
-                <textarea name="question4" id="question4" placeholder="Enter your response here here">
-        </textarea>
-                <button onclick="startConverting('question4')"><i class="fa fa-microphone btn btn-danger"></i></button>
-            </div>
-        </div>
-
-    </div>
-
-
     <form action="" method="POST">
         {% csrf_token %}
+        <div id="form">
+            <!-- Name -->
+            <div class="form-control">
+                <label for="name" id="label-name">
+                    Name
+                </label>
+
+                <!-- Input Type Text -->
+                <input type="text" name="name" id="name" placeholder="Enter your name" />
+            </div>
+
+            <!-- Email -->
+            <div class="form-control">
+                <label for="email" id="label-email">
+                    Email
+                </label>
+
+                <!-- Input Type Email-->
+                <input type="email" name="email" id="email" placeholder="Enter your email" />
+            </div>
+
+            <!-- Age -->
+            <div class="form-control">
+                <label for="age" id="label-age">
+                    Age
+                </label>
+
+                <!-- Input Type Text -->
+                <input type="text" name="age" id="age" placeholder="Enter your age" />
+            </div>
+
+            <!-- Role -->
+            <div class="form-control">
+                <label for="role" id="label-role">
+                    Which option best describes you?
+                </label>
+
+                <!-- Dropdown options -->
+                <select name="role" name="role" id="role">
+                    <option value="student">Student</option>
+                    <option value="intern">Intern</option>
+                    <option value="professional">
+                        Professional
+                    </option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="form-control">
+                <label for="question1">
+                    Question 1
+                </label>
+
+                <div class="input-control">
+                    <!-- multi-line text input control -->
+                    <input type="text" name="question1" id="question1" placeholder="Enter your response here here" />
+                    <button onclick="startConverting('question1')"><i
+                            class="fa fa-microphone btn btn-danger"></i></button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="form-control">
+                <label for="question2">
+                    Question 2
+                </label>
+
+                <div class="input-control">
+                    <!-- multi-line text input control -->
+                    <input type="text" name="question2" id="question2" placeholder="Enter your response here here" />
+                    <button onclick="startConverting('question2')"><i
+                            class="fa fa-microphone btn btn-danger"></i></button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="form-control">
+                <label for="question3">
+                    Question 3
+                </label>
+
+                <div class="input-control">
+                    <!-- multi-line text input control -->
+                    <input type="text" name="question3" id="question3" placeholder="Enter your response here here" />
+                    <button onclick="startConverting('question3')"><i
+                            class="fa fa-microphone btn btn-danger"></i></button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="form-control">
+                <label for="question4">
+                    Question 4
+                </label>
+
+                <div class="input-control">
+                    <!-- multi-line text input control -->
+                    <input type="text" name="question4" id="question4" placeholder="Enter your response here here" />
+                    <button onclick="startConverting('question4')"><i
+                            class="fa fa-microphone btn btn-danger"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+
+
         <!-- Multi-line Text Input Control -->
         <button type="submit" value="submit">
             Submit
